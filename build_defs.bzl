@@ -40,7 +40,7 @@ def pybind_extension(
         copts = copts + PYBIND_COPTS + ["-fvisibility=hidden"],
         features = features + PYBIND_FEATURES,
         linkopts = [
-            "-Wl,-Bsymbolic",
+            "-Wl",
         ],
         linkshared = 1,
         tags = tags + ["local", "manual"],
