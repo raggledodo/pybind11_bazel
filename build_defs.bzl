@@ -31,6 +31,7 @@ def pybind_extension(
         features = [],
         tags = [],
         deps = [],
+        cc_linkopts = [],
         **kwargs):
     # Mark common dependencies as required for build_cleaner.
     tags = tags + ["req_dep=%s" % dep for dep in PYBIND_DEPS]
@@ -39,9 +40,7 @@ def pybind_extension(
         name = name + ".so",
         copts = copts + PYBIND_COPTS + ["-fvisibility=hidden"],
         features = features + PYBIND_FEATURES,
-        linkopts = [
-            "-Wl",
-        ],
+        linkopts = cc_linkopts,
         linkshared = 1,
         tags = tags + ["local", "manual"],
         deps = deps + PYBIND_DEPS,
